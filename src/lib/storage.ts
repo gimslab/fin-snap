@@ -1,6 +1,9 @@
 import type { ApiKeyConfig, AiProvider } from "@/types";
+import { DEFAULT_OUTPUT_CONFIG, mergeWithDefaults } from "@/lib/output-sections";
 
 const STORAGE_KEY = "fin-snap:api-keys";
+const OUTPUT_CONFIG_KEY = "fin-snap:output-config";
+
 
 const DEFAULT_CONFIG: ApiKeyConfig = {
     activeProvider: "gemini",
@@ -47,3 +50,27 @@ export function clearApiKeyConfig(): void {
     if (typeof window === "undefined") return;
     localStorage.removeItem(STORAGE_KEY);
 }
+
+/**
+ * 출력 섹션 설정을 불러옵니다.
+ */
+export function loadOutputConfig() {
+    if (typeof window === "undefined") return DEFAULT_OUTPUT_CONFIG;
+    try {
+        const raw = localStorage.getItem(OUTPUT_CONFIG_KEY);
+        if (!raw) return DEFAULT_OUTPUT_CONFIG;
+        return mergeWithDefaults(JSON.parse(raw));
+    } catch {
+        return DEFAULT_OUTPUT_CONFIG;
+    }
+}
+
+/**
+ * 출력 섹션 설정을 저장합니다. (id → enabled 맵만 저장)
+ */
+export function saveOutputConfig(config: typeof DEFAULT_OUTPUT_CONFIG): void {
+    if (typeof window === "undefined") return;
+    const slim = Object.fromEntries(config.map((s) => [s.id, s.enabled]));
+    localStorage.setItem(OUTPUT_CONFIG_KEY, JSON.stringify(slim));
+}
+

@@ -18,13 +18,44 @@ export interface StockSearchRequest {
     provider: AiProvider;
 }
 
+/** Search Grounding에서 반환된 출처 정보 */
+export interface GroundingSource {
+    title: string;
+    url: string;
+}
+
 /** AI가 반환하는 종목 정보 응답 */
 export interface StockSearchResult {
     query: string;
     provider: AiProvider;
     content: string; // 마크다운 형식의 AI 응답 텍스트
     createdAt: string; // ISO 8601
+    sources?: GroundingSource[]; // Search Grounding 출처 (있을 경우)
 }
 
 /** 검색 상태 */
 export type SearchStatus = "idle" | "loading" | "success" | "error";
+
+/** 출력 섹션 ID */
+export type OutputSectionId =
+    | "basic_info"
+    | "key_metrics"
+    | "summary"
+    | "investment_points"
+    | "risk_factors"
+    | "dividend_detail"
+    | "financials"
+    | "technical";
+
+/** 출력 섹션 하나 */
+export interface OutputSection {
+    id: OutputSectionId;
+    label: string;
+    emoji: string;
+    description: string;
+    enabled: boolean;
+}
+
+/** 전체 출력 설정 */
+export type OutputConfig = OutputSection[];
+

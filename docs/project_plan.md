@@ -3,12 +3,16 @@
 ## 개요
 사용자가 주식이나 ETF 종목명을 입력하면 AI(Gemini/OpenAI)를 사용하여 가장 핵심적인 관련 정보를 요약하여 제공하는 웹 애플리케이션입니다.
 
-## 기술 스택 (제안)
-- **Frontend/Framework**: Next.js (React) 또는 Vite (React)
-- **Styling**: Modern CSS (Vanilla CSS Modules or Styled Components)
+## 기술 스택
+- **Frontend/Framework**: Next.js (React)
+- **Styling**: Modern CSS (Vanilla CSS Modules)
 - **Deployment**: Vercel
 - **State Management**: React Hooks & Context API (API Key 및 검색 기록 관리)
 - **Storage**: LocalStorage (사용자 브라우저에 API Key 저장)
+- **AI 모델**: Gemini 2.5 Flash (`gemini-2.5-flash`)
+- **데이터 수집 전략**:
+  - **Phase 1 (현재)**: Gemini Search Grounding — Gemini가 Google 검색을 통해 최신 정보를 직접 수집
+  - **Phase 2 (예정)**: 외부 전문 금융 API 연동 — 정확한 실시간 데이터를 직접 가져온 후 Gemini는 분석/정리만 담당
 
 ## 프로젝트 마일스톤
 
@@ -19,12 +23,23 @@
 - [x] Vercel 배포 환경 구성 → https://fin-snap.vercel.app
 
 ### 2단계: 핵심 기능 설계 및 구현 (Core Logic)
-- [ ] **AI Service Layer 구현**:
-    - [ ] Gemini API 연동
-    - [ ] OpenAI API 연동
+- [x] **AI Service Layer 구현**:
+    - [x] Gemini API 연동 (`gemini-2.5-flash`)
+    - [x] Gemini Search Grounding 적용 (최신 데이터 수집)
+    - [ ] OpenAI API 연동 (추후)
     - [x] API Key 관리 로직 (브라우저 저장소 활용)
 - [x] **Data Model 정의**:
     - [x] 주식 정보 요청/응답 구조 설계
+
+### 2.5단계: 데이터 수집 고도화 (Data Layer Upgrade)
+> 📌 Search Grounding 동작 확인 후, 외부 전문 금융 API로 전환 예정 (문제 유무와 무관하게 반드시 진행)
+
+- [ ] **외부 금융 API 연동 (Phase 2)**:
+    - [ ] 후보 API 선정 (Yahoo Finance / Alpha Vantage / Financial Modeling Prep 등)
+    - [ ] 종목 검색 → 실시간 데이터 fetch 로직 구현
+    - [ ] Gemini 프롬프트에 실시간 데이터를 주입하는 파이프라인 구성
+    - [ ] Search Grounding 제거 후 Gemini는 분석/정리 전담으로 전환
+    - [ ] 한국 종목(KRX) 데이터 지원 확인
 
 ### 3단계: UI/UX 디자인 및 구현 (Frontend Implementation)
 - [x] **메인 페이지 (Landing)**:
