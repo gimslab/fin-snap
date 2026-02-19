@@ -39,7 +39,7 @@ export default function Home() {
               display: "inline-block",
             }}
           />
-          개발 중
+          v0.1 Preview
         </div>
       </header>
 
