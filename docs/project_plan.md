@@ -13,23 +13,23 @@
 ## 프로젝트 마일스톤
 
 ### 1단계: 프로젝트 초기화 및 기반 설정 (Project Setup)
-- [ ] Git 저장소 초기화
-- [ ] Next.js 프로젝트 생성 (`npx create-next-app`)
-- [ ] 기본 디렉토리 구조 및 설정 파일 구성
-- [ ] Vercel 배포 환경 구성 (선택 사항: CLI 또는 GitHub 연동)
+- [x] Git 저장소 초기화
+- [x] Next.js 프로젝트 생성 (`npx create-next-app`)
+- [x] 기본 디렉토리 구조 및 설정 파일 구성
+- [x] Vercel 배포 환경 구성 → https://fin-snap.vercel.app
 
 ### 2단계: 핵심 기능 설계 및 구현 (Core Logic)
 - [ ] **AI Service Layer 구현**:
-    - Gemini API 연동
-    - OpenAI API 연동
-    - API Key 관리 로직 (브라우저 저장소 활용)
-- [ ] **Data Model 정의**:
-    - 주식 정보 요청/응답 구조 설계
+    - [ ] Gemini API 연동
+    - [ ] OpenAI API 연동
+    - [x] API Key 관리 로직 (브라우저 저장소 활용)
+- [x] **Data Model 정의**:
+    - [x] 주식 정보 요청/응답 구조 설계
 
 ### 3단계: UI/UX 디자인 및 구현 (Frontend Implementation)
-- [ ] **메인 페이지 (Landing)**:
-    - 깔끔하고 집중도 높은 검색창 디자인
-    - 동적 배경 또는 미려한 인터랙션
+- [x] **메인 페이지 (Landing)**:
+    - [x] 깔끔하고 집중도 높은 검색창 디자인
+    - [x] 동적 배경 또는 미려한 인터랙션
 - [ ] **결과 페이지 (Result View)**:
     - 마크다운 렌더링을 통한 가독성 높은 정보 표시
     - 로딩 애니메이션 (Skeleton loading)
