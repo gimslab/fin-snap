@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useApiKey } from "@/hooks/useApiKey";
 import { useSearch } from "@/hooks/useSearch";
 import { useOutputConfig } from "@/hooks/useOutputConfig";
@@ -11,7 +11,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const EXAMPLE_TICKERS = ["삼성전자", "AAPL", "SCHD", "QQQ", "005930", "NVDA", "KODEX 200"];
 
-export default function Home() {
+function HomeContent() {
   const { config, setKey, setProvider, hasKey } = useApiKey();
   const { status, result, error, search, reset } = useSearch();
   const { config: outputConfig, toggle: toggleSection } = useOutputConfig();
@@ -244,5 +244,13 @@ export default function Home() {
         onProviderChange={setProvider}
       />
     </>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<main style={{ minHeight: "100dvh", backgroundColor: "var(--bg-deep)" }} />}>
+      <HomeContent />
+    </Suspense>
   );
 }
