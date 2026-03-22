@@ -44,8 +44,7 @@ export type OutputSectionId =
     | "investment_points"
     | "risk_factors"
     | "dividend_detail"
-    | "financials"
-    | "technical";
+    | "financials";
 
 /** 출력 섹션 하나 */
 export interface OutputSection {

@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { StockSearchResult } from "@/types";
+import { FinTrendChart } from "./FinTrendChart";
 
 /* ─────────────────────────── Skeleton ─────────────────────────── */
 export function ResultSkeleton() {
@@ -63,6 +65,8 @@ const PROVIDER_LABEL = {
 };
 
 export function ResultView({ result, onReset }: ResultViewProps) {
+    const [isSourcesOpen, setIsSourcesOpen] = useState(false);
+
     const date = new Date(result.createdAt).toLocaleString("ko-KR", {
         month: "long",
         day: "numeric",
@@ -121,6 +125,24 @@ export function ResultView({ result, onReset }: ResultViewProps) {
                                 {children}
                             </a>
                         ),
+                        code: ({ className, children, ...props }) => {
+                            const match = /language-(\w+)/.exec(className || "");
+                            if (match && match[1] === "json") {
+                                try {
+                                    const parsed = JSON.parse(String(children));
+                                    if (Array.isArray(parsed) && parsed.length > 0 && "revenue" in parsed[0]) {
+                                        return <FinTrendChart data={parsed} />;
+                                    }
+                                } catch {
+                                    // fallback to regular code block
+                                }
+                            }
+                            return (
+                                <code className={className} {...props}>
+                                    {children}
+                                </code>
+                            );
+                        },
                     }}
                 >
                     {result.content}
@@ -130,12 +152,31 @@ export function ResultView({ result, onReset }: ResultViewProps) {
             {/* Search Grounding Sources */}
             {result.sources && result.sources.length > 0 && (
                 <div className="sources-section">
-                    <div className="sources-header">
+                    <button 
+                        className="sources-header"
+                        onClick={() => setIsSourcesOpen(!isSourcesOpen)}
+                        style={{ background: "transparent", border: "none", cursor: "pointer", display: "flex", width: "100%", alignItems: "center", padding: 0 }}
+                        aria-expanded={isSourcesOpen}
+                        aria-label="출처 목록 토글"
+                    >
                         <span className="sources-icon">🔗</span>
                         <span className="sources-label">참고 출처</span>
                         <span className="sources-badge">{result.sources.length}</span>
-                    </div>
-                    <ul className="sources-list">
+                        <span
+                            style={{
+                                marginLeft: "auto",
+                                fontSize: "16px",
+                                color: "var(--text-muted)",
+                                transform: isSourcesOpen ? "rotate(180deg)" : "rotate(0deg)",
+                                transition: "transform 0.2s ease"
+                            }}
+                            aria-hidden="true"
+                        >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                    </button>
+                    {isSourcesOpen && (
+                        <ul className="sources-list" style={{ marginTop: 12 }}>
                         {result.sources.map((source, idx) => {
                             const domain = (() => {
                                 try { return new URL(source.url).hostname.replace("www.", ""); }
@@ -160,6 +201,7 @@ export function ResultView({ result, onReset }: ResultViewProps) {
                             );
                         })}
                     </ul>
+                    )}
                 </div>
             )}
         </div>

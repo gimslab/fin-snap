@@ -48,14 +48,7 @@ export const DEFAULT_OUTPUT_CONFIG: OutputConfig = [
         id: "financials",
         label: "재무 요약",
         emoji: "🏦",
-        description: "매출, 영업이익, 부채비율",
-        enabled: false,
-    },
-    {
-        id: "technical",
-        label: "기술적 지표",
-        emoji: "📈",
-        description: "52주 고저가, 이동평균",
+        description: "최근 5년 분기별 재무 추세 그래프",
         enabled: false,
     },
 ];
@@ -115,25 +108,18 @@ export function buildSystemPrompt(config: OutputConfig): string {
                 break;
 
             case "financials":
-                sectionBlocks.push(`### 🏦 재무 요약 (최근 연간)
-| 항목 | 값 |
-|------|-----|
-| 매출액 | |
-| 영업이익 | |
-| 순이익 | |
-| 부채비율 | |
-| ROE | |`);
+                sectionBlocks.push(`### 🏦 재무 요약 (최근 분기별 추세, 최대 5년 20분기)
+반드시 다음 형식의 JSON 코드블록 안에 데이터를 작성해야 합니다. 과거 5년간(최소 12~20개 분기)의 지표를 "모두" 빠짐없이 배열에 담아주세요. 단 1~2개의 분기점만 반환해서는 안 됩니다.
+\`\`\`json
+[
+  { "quarter": "22Q1", "revenue": 1000, "opIncome": 100, "netIncome": 80, "debtRatio": 120, "roe": 15 },
+  { "quarter": "22Q2", "revenue": 1100, "opIncome": 110, "netIncome": 85, "debtRatio": 118, "roe": 15.5 },
+  // ... 최소 10개 이상의 과거 분기 데이터를 반드시 추가하세요! ...
+]
+\`\`\`
+단위는 생략하고 순수 숫자만 값으로 넣으세요. 데이터가 없는 구간은 0 또는 근사치로 기입하며, 오래된 과거 분기부터 가장 최근 분기순(과거->현재)으로 배열이 끝나야 합니다.`);
                 break;
 
-            case "technical":
-                sectionBlocks.push(`### 📈 기술적 지표
-| 항목 | 값 |
-|------|-----|
-| 52주 최고가 | |
-| 52주 최저가 | |
-| 50일 이동평균 | |
-| 200일 이동평균 | |`);
-                break;
         }
     }
 

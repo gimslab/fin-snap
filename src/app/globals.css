@@ -6,15 +6,15 @@
 
 /* --- CSS Variables --- */
 :root {
-  --bg-deep: #080c14;
-  --bg-card: rgba(255, 255, 255, 0.04);
-  --bg-card-hover: rgba(255, 255, 255, 0.07);
-  --border: rgba(255, 255, 255, 0.08);
+  --bg-deep: #f8fafc;
+  --bg-card: rgba(0, 0, 0, 0.04);
+  --bg-card-hover: rgba(0, 0, 0, 0.07);
+  --border: rgba(0, 0, 0, 0.08);
   --border-focus: rgba(99, 179, 237, 0.5);
 
-  --text-primary: #f0f4ff;
-  --text-secondary: #8899bb;
-  --text-muted: #4a5670;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
 
   --accent-blue: #3b82f6;
   --accent-cyan: #06b6d4;
@@ -31,8 +31,8 @@
   --radius-lg: 20px;
   --radius-full: 999px;
 
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-glow-blue: 0 0 40px rgba(59, 130, 246, 0.25);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-glow-blue: 0 0 40px rgba(59, 130, 246, 0.15);
 }
 
 /* --- Reset --- */
@@ -46,7 +46,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html,
@@ -124,8 +124,8 @@ a {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 100%);
 }
@@ -151,7 +151,7 @@ a {
 
 .card:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 /* --- Gradient Text --- */
@@ -178,7 +178,7 @@ a {
 .badge-blue {
   background: rgba(59, 130, 246, 0.12);
   border-color: rgba(59, 130, 246, 0.3);
-  color: #93c5fd;
+  color: var(--accent-blue);
 }
 
 /* --- Search Input --- */
@@ -190,7 +190,7 @@ a {
 .search-input {
   width: 100%;
   padding: 18px 60px 18px 56px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   color: var(--text-primary);
@@ -206,7 +206,7 @@ a {
 
 .search-input:focus {
   border-color: var(--border-focus);
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.07);
   box-shadow: var(--shadow-glow-blue);
 }
 
@@ -302,7 +302,7 @@ a {
 
 .ticker-pill {
   padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   font-size: 13px;
@@ -314,7 +314,7 @@ a {
 .ticker-pill:hover {
   background: rgba(59, 130, 246, 0.1);
   border-color: rgba(59, 130, 246, 0.35);
-  color: #93c5fd;
+  color: var(--accent-blue);
 }
 
 /* --- Coming Soon Banner --- */
@@ -434,7 +434,7 @@ a {
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
@@ -447,8 +447,8 @@ a {
 }
 
 .settings-btn:hover {
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.09);
+  border-color: rgba(0, 0, 0, 0.15);
   color: var(--text-primary);
 }
 
@@ -516,7 +516,7 @@ a {
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
@@ -528,8 +528,8 @@ a {
 }
 
 .output-config-trigger:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
   color: var(--text-primary);
 }
 
@@ -559,7 +559,7 @@ a {
 .output-config-panel {
   margin-top: 10px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
 }
@@ -582,7 +582,7 @@ a {
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   color: var(--text-muted);
@@ -595,14 +595,14 @@ a {
 }
 
 .output-section-chip:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.08);
   color: var(--text-secondary);
 }
 
 .output-section-chip.enabled {
   background: rgba(99, 179, 237, 0.1);
   border-color: rgba(99, 179, 237, 0.35);
-  color: #93c5fd;
+  color: var(--accent-blue);
 }
 
 .output-section-chip.enabled:hover {
@@ -641,10 +641,10 @@ a {
 }
 
 .modal-panel {
-  background: #0f1727;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  box-shadow: var(--shadow-card);
   width: 100%;
   max-width: 480px;
   max-height: 90vh;
@@ -666,7 +666,7 @@ a {
 }
 
 .modal-close-btn {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.06);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
@@ -681,7 +681,7 @@ a {
 }
 
 .modal-close-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
   color: var(--text-primary);
 }
 
@@ -695,7 +695,7 @@ a {
   border: 1px solid rgba(16, 185, 129, 0.2);
   border-radius: var(--radius-md);
   font-size: 12px;
-  color: rgba(52, 211, 153, 0.9);
+  color: var(--accent-green);
   line-height: 1.5;
 }
 
@@ -719,7 +719,7 @@ a {
   border: 1px solid rgba(16, 185, 129, 0.25);
   border-radius: var(--radius-full);
   font-size: 11px;
-  color: #34d399;
+  color: var(--accent-green);
   font-weight: 500;
 }
 
@@ -730,7 +730,7 @@ a {
 .modal-input {
   width: 100%;
   padding: 12px 44px 12px 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-primary);
@@ -787,7 +787,7 @@ a {
   justify-content: center;
   gap: 7px;
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   color: var(--text-secondary);
@@ -799,13 +799,13 @@ a {
 }
 
 .provider-tab:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .provider-tab.active {
   background: rgba(59, 130, 246, 0.12);
   border-color: rgba(59, 130, 246, 0.4);
-  color: #93c5fd;
+  color: var(--accent-blue);
 }
 
 .provider-icon {
@@ -840,7 +840,7 @@ a {
 
 .btn-secondary {
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
@@ -852,7 +852,7 @@ a {
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(0, 0, 0, 0.09);
   color: var(--text-primary);
 }
 
@@ -865,9 +865,9 @@ a {
 .skeleton-line {
   border-radius: 6px;
   background: linear-gradient(90deg,
-      rgba(255, 255, 255, 0.04) 0%,
-      rgba(255, 255, 255, 0.09) 50%,
-      rgba(255, 255, 255, 0.04) 100%);
+      rgba(0, 0, 0, 0.04) 0%,
+      rgba(0, 0, 0, 0.09) 50%,
+      rgba(0, 0, 0, 0.04) 100%);
   background-size: 200% 100%;
   animation: shimmer 1.6s infinite;
   display: block;
@@ -1033,7 +1033,7 @@ a {
   flex-wrap: wrap;
   gap: 10px;
   padding: 14px 20px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid var(--border);
 }
 
@@ -1052,7 +1052,7 @@ a {
 .result-query-chip {
   background: rgba(59, 130, 246, 0.12);
   border: 1px solid rgba(59, 130, 246, 0.25);
-  color: #93c5fd;
+  color: var(--accent-blue);
 }
 
 .result-provider-chip {
@@ -1067,7 +1067,7 @@ a {
 
 .btn-new-search {
   padding: 6px 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
@@ -1079,7 +1079,7 @@ a {
 }
 
 .btn-new-search:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(0, 0, 0, 0.09);
   color: var(--text-primary);
 }
 
@@ -1163,7 +1163,7 @@ a {
 
 .md-th {
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.04);
   color: var(--text-secondary);
   font-weight: 600;
   font-size: 12px;
@@ -1202,7 +1202,7 @@ a {
 .sources-section {
   border-top: 1px solid var(--border);
   padding: 20px 32px 28px;
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(0, 0, 0, 0.015);
 }
 
 .sources-header {
@@ -1257,7 +1257,7 @@ a {
   align-items: center;
   gap: 10px;
   padding: 9px 12px;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   text-decoration: none;
@@ -1276,7 +1276,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 4px;
   font-size: 11px;
   font-weight: 600;
